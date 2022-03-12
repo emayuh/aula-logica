@@ -1,0 +1,24 @@
+<meta charset="utf-8">
+
+<script>
+	
+function pulaLinha(){
+
+	document.write("<br>");
+
+}
+
+function mostra(frase){
+
+	document.write(frase);
+	pulaLinha();
+}
+
+var anoChegada = 1500
+var anoAtual = 2022
+var mediaDeIdade = 28
+var numeroDeGeracoes = ((anoAtual-anoChegada)/mediaDeIdade)
+
+mostra("Desde a chegada dos portugueses, passaram-se " + numeroDeGeracoes + " gerações.");
+
+</script>

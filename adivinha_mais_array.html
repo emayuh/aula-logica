@@ -1,0 +1,74 @@
+<meta charset="utf-8">
+
+<input/>
+
+<button>Compare com o meu segredo</button>
+
+<script>
+
+	function sorteia(){
+
+		return Math.round(Math.random()*10); //aqui é para que seja sorteada a minha lista de números aleatórios
+	}
+
+	function sorteiaNumeros(quantidade){ //para definir a quantidade de números sorteados
+
+		var segredos = []; //criou o array
+		var numero = 1;
+
+		while(numero <= quantidade){
+
+			var numeroAleatorio = sorteia();
+			if(numeroAleatorio !== 0){ //o programador nao deseja que o numero 0 seja sorteado
+
+				var achou = false;
+				for(var posicao = 0; posicao < segredos.length; posicao++){
+
+					if(segredos[posicao] == numeroAleatorio){ //condicao onde o numero aleatorio é diferente ao que ja foi sorteado
+						achou = true;
+						break;
+					}
+				}
+				if(achou == false){
+
+					segredos.push(numeroAleatorio); //.push é uma função que coloca o numero dentro do array. Nota-se que vem com o uso de parênteses e não colchetes
+					numero++;
+				}
+
+			}
+		} 
+		return segredos; //tudo isso para colocar no array da variavel segredo, abaixo
+	}
+
+	var segredos = sorteiaNumeros(5); //quantidade de numeros sorteados que deseja
+	console.log(segredos);
+
+	var input = document.querySelector("input");
+	input.focus();
+
+	function verifica(){
+
+		var achou = false;
+
+		for(var posicao = 0; posicao < segredos.length; posicao++){
+			if(input.value == segredos[posicao]){
+				alert("Você ACERTOU!!!");
+				achou = true;
+				break;
+			}
+		}
+
+		if(achou == false){
+			alert("Você ERROU!!!");
+		}
+
+	input.value = "";
+	input.focus();
+	}
+
+
+
+	var button = document.querySelector("button");
+	button.onclick = verifica;
+	
+</script>
